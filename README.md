@@ -5,13 +5,19 @@
 Superpowered SDK: after installation, must make a copy of the `Superpowered` folder to `/usr/local`, so this package can access all headers and libraries via `/usr/local/Superpowered`
 
 ## Status
-In development, it is not able to build because of [this linker issue](https://github.com/superpoweredSDK/Low-Latency-Android-iOS-Linux-Windows-tvOS-macOS-Interactive-Audio-Platform/issues/481).
+In development.
 
 ## Xcode Setting
 
 As `test.sh`:
 
-`swift test -Xlinker -L/usr/local/Superpowered`
+```
+swift test -Xlinker -L/usr/local/Superpowered \
+-Xlinker -framework -Xlinker CoreAudio \
+-Xlinker -framework -Xlinker CoreMedia \
+-Xlinker -framework -Xlinker AudioToolbox \
+-Xlinker -framework -Xlinker AVFoundation
+```
 
 Set Xcode linker path to the above one.
 
